@@ -15,7 +15,7 @@
     ```
 4. Start docker container
     ```shell
-   docker run -p 6380:6380 --name redis-ssl -v $(pwd)/redis.conf:/usr/local/etc/redis/redis.conf -v $(pwd)/cert.pem:/etc/ssl/cert.pem -v $(pwd)/key.pem:/etc/ssl/key.pem -e REDIS_PASSWORD=Abcd@1234 -d redis-ssl redis-server /usr/local/etc/redis/redis.conf --tls-port 6380 --tls-cert-file /etc/ssl/cert.pem --tls-key-file /etc/ssl/key.pem --tls-auth-clients no --requirepass Abcd@1234    
+   docker run -p 6380:6380 --name redis-ssl -v $(pwd)/redis.conf:/usr/local/etc/redis/redis.conf -v $(pwd)/cert.pem:/etc/ssl/cert.pem -v $(pwd)/key.pem:/etc/ssl/key.pem -e REDIS_PASSWORD=yourpass -d redis-ssl redis-server /usr/local/etc/redis/redis.conf --tls-port 6380 --tls-cert-file /etc/ssl/cert.pem --tls-key-file /etc/ssl/key.pem --tls-auth-clients no --requirepass yourpass
    ```
 ## Test with redis-cli
 1. Install redis-cli
@@ -25,7 +25,7 @@
     ```
 3. Test with `redis-cli`
     ```shell
-    redis-cli --tls --cacert cert.pem -h localhost -p 6380 -a Abcd@1234
+    redis-cli --tls --cacert cert.pem -h localhost -p 6380 -a yourpass
     ```
    
 ## Test with java application
